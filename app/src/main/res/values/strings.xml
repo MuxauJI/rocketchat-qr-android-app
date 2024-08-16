@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">QRCodeApp</string>
+
+    <string name="qr_school_21">QRSchool21</string>
+
+    <!-- State -->
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+
+    <!-- QRCode -->
+    <string name="qr_code">QR Code</string>
+    <string name="qr_valid">QR Code valid</string>
+    <string name="click_to_generate_qr">Click Screen to Generate QR Code</string>
+
+    <!-- Token -->
+    <string name="token">Token</string>
+    <string name="token_saved">Token saved</string>
+    <string name="enter_token">Enter Token</string>
+    <string name="token_saved_change">Token saved. Tap to change token.</string>
 </resources>

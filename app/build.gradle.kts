@@ -1,8 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
-
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
+}
 android {
     namespace = "s21.qrcodeapp"
     compileSdk = 34
@@ -54,7 +60,7 @@ tasks.withType<Test> {
 }
 
 dependencies {
-    implementation("org.java-websocket:Java-WebSocket:1.5.2")
+    implementation(libs.java.websocket)
     // Основные зависимости
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -68,12 +74,13 @@ dependencies {
     implementation(libs.androidx.material3)
 
     // Coil для загрузки изображений
-    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation(libs.coil.compose)
     implementation(libs.androidx.junit.ktx)
+    implementation(libs.androidx.glance.appwidget)
 
     // Зависимости для тестирования
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation(libs.junit.jupiter.api)
+    testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.junit)
     testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
@@ -83,6 +90,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Coil
-    implementation("io.coil-kt:coil-compose:2.1.0")
+    // Dagger Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.kotlin.stdlib)
 }
